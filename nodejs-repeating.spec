@@ -7,7 +7,7 @@
 Summary:       Repeat a string - fast
 Name:          %{?scl_prefix}nodejs-%{npm_name}
 Version:       2.0.0
-Release:       7%{?dist}
+Release:       8%{?dist}
 License:       MIT
 URL:           https://github.com/sindresorhus/repeating
 Source0:       http://registry.npmjs.org/%{npm_name}/-/%{npm_name}-%{version}.tgz
@@ -27,12 +27,17 @@ Repeat a string - fast
 mkdir -p %{buildroot}%{nodejs_sitelib}/%{npm_name}
 cp -pr index.js package.json %{buildroot}%{nodejs_sitelib}/%{npm_name}
 
+%nodejs_symlink_deps
+
 %files
 %{!?_licensedir:%global license %doc}
 %doc license readme.md
 %{nodejs_sitelib}/%{npm_name}
 
 %changelog
+* Wed Mar 08 2017 Zuzana Svetlikova <zsvetlik@redhat.com> - 2.0.0-8
+- Add symlink macro
+
 * Tue Feb 16 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 2.0.0-7
 - Use macro in -runtime dependency
 
